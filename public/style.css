@@ -1,0 +1,25 @@
+* { box-sizing: border-box; }
+
+body {
+    margin: auto;
+    background: #fff;
+}
+
+section {
+    display: flex;
+    background: #008f8f;
+    flex-direction: column;
+    text-align: center;
+    padding: 33px;
+}
+
+section > div {
+    flex: 1;
+    border: solid 1px #a0a0a0;
+    margin: 10px 0;
+    border-radius: 6px;
+}
+
+form {
+    padding: 40px 60px;
+}
