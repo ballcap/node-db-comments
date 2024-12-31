@@ -12,8 +12,15 @@ const pool = new Pool({
     ssl: { rejectUnauthorized: false }, // Required for cloud-hosted PostgreSQL
 });
 
+const corsOptions = {
+    origin: '*', // Adjust this to specify allowed origins if needed
+    methods: 'GET,POST',
+    allowedHeaders: ['Content-Type'],
+};
+
+app.use(cors(corsOptions));
+
 // Middleware
-app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static('public')); // Serve static files from the public folder
 
