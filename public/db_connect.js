@@ -2,15 +2,23 @@ const apiUrl = 'https://node-db-comments.onrender.com/comments';
 
 // Fetch comments
 async function fetchComments() {
-    const response = await fetch(apiUrl);
-    const comments = await response.json();
-    const commentList = document.getElementById('commentList');
-    commentList.innerHTML = '';
-    comments.forEach(comment => {
-        const div = document.createElement('div');
-        div.textContent = `${comment.commentname} (${new Date(comment.commentdate).toLocaleString()})`;
-        commentList.appendChild(div);
-    });
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const comments = await response.json();
+        if (!Array.isArray(comments)) {
+            throw new Error('Response is not an array');
+        }
+
+        comments.forEach(comment => {
+            console.log(comment);
+        });
+    } catch (error) {
+        console.error('Error fetching comments:', error.message);
+    }
 }
 
 // Add a new comment
