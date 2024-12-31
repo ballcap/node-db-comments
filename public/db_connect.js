@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/comments';
+const apiUrl = 'https://node-db-comments.onrender.com/comments';
 
 // Fetch comments
 async function fetchComments() {
