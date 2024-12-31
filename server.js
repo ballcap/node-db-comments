@@ -9,7 +9,9 @@ app.use(express.json()); // Middleware to parse JSON bodies
 // Database connection
 const pool = new Pool({
     connectionString: 'postgresql://postgres_85sq_user:LdYres2nwYcivLGehN70nzNuIivCvaV8@dpg-ctq0dd3tq21c739s7ovg-a.singapore-postgres.render.com/postgres_85sq',
-    ssl: { rejectUnauthorized: false }, // Render requires SSL
+    ssl: { rejectUnauthorized: false },
+    idleTimeoutMillis: 30000, // Close idle clients after 30 seconds
+    connectionTimeoutMillis: 2000, // Timeout after 2 seconds if cannot connect
 });
 
 // Middleware
